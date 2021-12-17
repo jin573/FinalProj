@@ -1,17 +1,22 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 from .models import Post
 
-def index(request):
-    items = Post.objects.all().order_by('-pk')
+class PostList(ListView):
+    model = Post
+    ordering = '-pk'
 
-    return render(
-        request,
-        'shoesmall/index.html',
-        {
-            'items':items,
-        }
+#def index(request):
+#    items = Post.objects.all().order_by('-pk')
 
-    )
+#    return render(
+#        request,
+#        'shoesmall/post_list.html',
+#        {
+#            'items':items,
+#        }
+
+#    )
 
 def single_item_page(request,pk):
     item = Post.objects.get(pk=pk)
