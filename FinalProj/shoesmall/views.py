@@ -12,3 +12,14 @@ def index(request):
         }
 
     )
+
+def single_item_page(request,pk):
+    item = Post.objects.get(pk=pk)
+
+    return render(
+        request,
+        'shoesmall/single_item_page.html',
+        {
+            'item':item,
+        }
+    )

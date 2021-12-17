@@ -21,7 +21,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
 
-                                    <h5 class="fw-bolder">{{ i.name }}</h5>
+                                    <h5 class="fw-bolder"><a href="{{ i.get_absolute_url }}">{{ i.item }}</a></h5>
 
                                     <h3>{{ i.hook_text }}</h3>
                                     <h3>{{ i.price }}&bsol;</h3>
