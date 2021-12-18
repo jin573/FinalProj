@@ -32,6 +32,7 @@
                             <h3 class="display-5 fw-bolder">{{ post.price }}원</h3>
                         </div>
                         <p>{{ post.hook_text }}</p>
+                        <p>{{ post.get_context_markdown | safe }}</p>
                         {%if post.msg == True%}
                         <p>재입고 예정일: {{ post.restock }}</p>
                         {%else%}

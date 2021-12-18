@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 
 class PostUpdate(LoginRequiredMixin, UpdateView):
     model = Post
-    fields = ['item', 'hook_text', 'head_image', 'price', 'product', 'category', 'msg', 'restock']
+    fields = ['item', 'hook_text', 'context', 'head_image', 'price', 'product', 'category', 'msg', 'restock']
 
     template_name = 'shoesmall/post_update_form.html'
 
@@ -18,7 +18,7 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
 
 class PostCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = Post
-    fields = ['item', 'hook_text', 'head_image', 'price', 'product', 'category', 'msg', 'restock']
+    fields = ['item', 'hook_text', 'context', 'head_image', 'price', 'product', 'category', 'msg', 'restock']
 
     def test_func(self):
         return self.request.user.is_superuser or self.request.user.is_staff

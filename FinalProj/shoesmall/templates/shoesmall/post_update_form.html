@@ -1,4 +1,5 @@
 {% extends 'shoesmall/base_full_width.html' %}
+{% load crispy_forms_tags %}
 
 {% block main_area %}
     <h1>Edit Post</h1>
@@ -6,11 +7,12 @@
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
 
-            <table>
-                {{form}}
-            </table>
+            {{form | crispy }}
+
+        <br>
+
         <button type="submit" class="btn btn-primary float-right">Submit</button>
     </form>
-
+    {{form.media}}
 
 {% endblock %}
