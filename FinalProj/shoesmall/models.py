@@ -1,4 +1,7 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+
 # Create your models here.
 
 class Post(models.Model):
@@ -7,6 +10,7 @@ class Post(models.Model):
     head_image = models.ImageField(upload_to='shoesmall/images/%Y/%m/%d/', blank=True)
     price = models.CharField(max_length=20)
     #제조사
+    author = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
     #카테고리
 
     #tag
@@ -14,7 +18,7 @@ class Post(models.Model):
     restock = models.DateField(null=True)
 
     def __str__(self):
-        return f'{self.item}'
+        return f'{self.item}::{self.author}'
 
     def get_absolute_url(self):
         return f'/shoes_list/{self.pk}/'
