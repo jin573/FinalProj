@@ -2,6 +2,7 @@
 
 {%block main_area%}
 {% if post_list.exists %}
+
                     {%for i in post_list%}
                     <div class="col mb-5">
                         <div class="card h-100">
@@ -12,7 +13,7 @@
                             {%endif%}
                             <div class="card-body p-4">
                                 <div class="text-center">
-                                    <h3 class="small mb-1">{{ i.product | upper}}&nbsp;|&nbsp;카테고리</h3>
+                                    <h3 class="small mb-1">{{ i.product | upper}}&nbsp;|&nbsp;{{ i.category | upper}}</h3>
                                     <h4 class="fw-bolder"><b>{{ i.item }}</b></h4>
 
                                     <h6>{{ i.hook_text }}</h6>

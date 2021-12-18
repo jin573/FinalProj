@@ -26,7 +26,7 @@
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x500/dee2e6/6c757d.jpg"  alt="..."/></div>
                     {%endif%}
                     <div class="col-md-6">
-                        <h3 class="small mb-1">{{ post.product | upper }}&nbsp;|&nbsp;카테고리</h3>
+                        <h3 class="small mb-1">{{ post.product | upper }}&nbsp;|&nbsp;{{ post.category | upper}}</h3>
                         <h1 class="display-5 fw-bolder">{{ post.item }}</h1>
                         <div class="fs-5 mb-5">
                             <h3 class="display-5 fw-bolder">{{ post.price }}원</h3>
