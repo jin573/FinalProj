@@ -1,9 +1,11 @@
 {%extends 'shoesmall/base.html'%}
 
 {%block main_area%}
+
 {% if post_list.exists %}
 
-                    {%for i in post_list%}
+
+                {%for i in post_list%}
                     <div class="col mb-5">
                         <div class="card h-100">
                             {% if i.head_image %}

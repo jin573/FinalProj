@@ -34,29 +34,14 @@
         </header>
 
 
-
-    <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
-                {%if user.is_authenticated %}
-                {%if user.is_superuser or user.is_staff %}
-                <a role="button" class="btn btn-dark btn-sm float-right" href="/shoes_list/create_post/">New Item</a>
-                {%endif%}
-                {%endif%}
-
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4" id="main-area">
-
-                    {%block main_area%}
-                    {%endblock%}
-                </div>
+ <div class="container mt-auto">
+        <div class="row">
+            <div class="col-12" id="main-area">
+                {% block main_area %}
+                {% endblock %}
             </div>
-        </section>
-
-    <nav aria-label="Page navigation example">
-    <ul class="pagination justify-content-center mb-4">
-    <li class="page-item"><a class="page-link" href="#">&larr; Previous</a></li>
-    <li class="page-item disabled"><a class="page-link" href="#">Next &rarr;</a></li>
-    </ul>
-</nav>
+        </div>
+    </div>
 
 {% include 'shoesmall/footer.html'%}
 

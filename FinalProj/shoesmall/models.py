@@ -19,6 +19,10 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return f'/shoes_list/category/{self.slug}/'
+
     class Meta:
         verbose_name_plural = 'Categories'
 
@@ -34,6 +38,8 @@ class Post(models.Model):
     #tag
     msg = models.BooleanField(default=True)
     restock = models.DateField(null=True)
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.item}::{self.product}'
