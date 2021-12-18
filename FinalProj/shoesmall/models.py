@@ -4,7 +4,7 @@ from django.db import models
 class Post(models.Model):
     item = models.CharField(max_length=30)
     hook_text = models.CharField(max_length=30)
-    #이미지
+    head_image = models.ImageField(upload_to='shoesmall/images/%Y/%m/%d/', blank=True)
     price = models.CharField(max_length=20)
     #제조사
     #카테고리

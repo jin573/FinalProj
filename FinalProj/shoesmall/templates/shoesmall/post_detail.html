@@ -15,78 +15,16 @@
         <link href="{% static 'shoesmall/bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css" media="screen">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
-                <a class="navbar-brand" href="/">ShoesMall</a>
-                <!--나중에 카테고리 넣기-->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" id="navbarDropdown" href="/shoes_list/" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shoes</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item"><a class="nav-link" aria-current="page" href="/my_page/">My Page</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/company_shoesmall/">Company</a></li>
-                    </ul>
-
-                    <form class="d-flex ml-auto">
-                        <div class="card ml-auto mr-2">
-
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-dark" id="button-search" type="button">Search</button>
-                            </div>
-
-                    </div>
-                        <button class="btn btn-outline-dark" data-toggle="modal" data-target="#loginModal" type="submit">
-                            Log In
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="logInModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="logInModalLabel">Log In</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <div class="row-md-4 mb-4">
-              <button type="button" class="btn btn-outline-secondary btn-block btn-sm">
-              <i class="fab fa-google"></i>&nbsp;&nbsp; Log in with Goolgle</a></button>
-          </div>
-          <div class="row-md-4 mb-4">
-              <button type="button" class="btn btn-outline-secondary btn-block btn-sm">
-                  <i class="fas fa-envelope"></i>&nbsp;&nbsp; Log in with E-mail</a></button>
-          </div>
-          <div class="row-md-4"><button type="button" class="btn btn-outline-secondary btn-block btn-sm">
-              <i class="fas fa-envelope"></i>&nbsp;&nbsp; Sign Up with E-mail</a></button></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-        </nav>
-
+{% include 'shoesmall/navbar.html'%}
         <!-- Product section-->
-        <section class="py-5">
+        <section class="py-5" id="post-area">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                    {%if post.head_image %}
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="{{ post.head_image.url }}" width="600" height="500"/></div>
+                    {%else%}
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x500/dee2e6/6c757d.jpg"  alt="..."/></div>
+                    {%endif%}
                     <div class="col-md-6">
                         <h3 class="small mb-1">제조사/카테고리</h3>
                         <h1 class="display-5 fw-bolder">{{ post.item }}</h1>
@@ -110,7 +48,8 @@
                 </div>
             </div>
         </section>
-<section class="py-5 bg-light">
+
+<section class="py-5 bg-light" id="comment-area">
             <div class="container px-4 px-lg-5 mt-5">
                 <h2 class="fw-bolder mb-4">Comments</h2>
                 <div class="card bg-light">
@@ -154,11 +93,8 @@
                         </div>
             </div>
         </section>
-<!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">Fit and Free! ShoesMall <br> 고객센터: 02)100-3000 <br> 주소: 서울특별시 도봉구 덕새로</p></div>
-        </footer>
+
+{% include 'shoesmall/footer.html'%}
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
