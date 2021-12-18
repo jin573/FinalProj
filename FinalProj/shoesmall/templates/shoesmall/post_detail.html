@@ -44,6 +44,9 @@
                                 Add to cart
                             </button>
                         </div>
+                        {%if user.is_authenticated and user == post.author %}
+                        <a role="button" class="btn btn-dark btn-sm float-right" href="/shoes_list/update_post/{{post.pk}}/">Edit Item</a>
+                        {%endif%}
                     </div>
                 </div>
             </div>
